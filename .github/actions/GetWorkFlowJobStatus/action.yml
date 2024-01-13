@@ -1,0 +1,18 @@
+name: 'My Docker Composite Action'
+description: 'Performs tasks using Docker'
+inputs:
+  org:
+    description: 'The GitHub organization'
+    required: true
+  repo:
+    description: 'The GitHub repository'
+    required: true
+  github_token:
+    description: 'The GitHub access token'
+    required: true
+  branch_name:
+    description: 'The branch name to work with'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'

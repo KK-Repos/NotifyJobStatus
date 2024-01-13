@@ -30,6 +30,6 @@ for x in res["jobs"]:
 output_file = os.getenv('GITHUB_OUTPUT')
     
 with open(output_file, "a") as myfile:
-    myfile.write(f"my_output={output_file}")
+    myfile.write(f"my_output={output_jobs}")
 
 

@@ -27,5 +27,9 @@ for x in res["jobs"]:
         output_jobs.append(job_info)
 
 
-print(f"my_output={output_jobs} >> $GITHUB_OUTPUT")
+output_file = os.getenv('GITHUB_OUTPUT')
+    
+with open(output_file, "a") as myfile:
+    myfile.write(f"my_output={output_file}")
+
 

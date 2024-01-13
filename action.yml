@@ -16,3 +16,8 @@ inputs:
 runs:
   using: 'docker'
   image: 'Dockerfile'
+  args:
+    ORG: ${{ inputs.org }}
+    REPO: ${{ inputs.repo }}
+    GH_TOKEN: ${{ inputs.github_token }}
+    BRANCH_NAME: ${{ inputs.branch_name }}

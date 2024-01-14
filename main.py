@@ -29,7 +29,7 @@ for x in res["jobs"]:
         job_info = {
             "Job Name": x["name"],
             "HTML URL": x["html_url"],
-            "Status": x["status"]
+            "Status": x["conclusion"]
         }
         output_jobs.append(job_info)
 

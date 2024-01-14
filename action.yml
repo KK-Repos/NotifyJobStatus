@@ -10,9 +10,12 @@ inputs:
   RUN_ID:
     description: 'The Current workflow run _id'
     required: true
-  # JOB_NAME:
-  #   description: 'The Workflow's job name'
-  #   required: true
+  JOB_NAME_1:
+    description: 'The Workflow's job name'
+    required: true
+  JOB_NAME_2:
+    description: 'The Workflow's job name'
+    required: true
 runs:
   using: 'docker'
   image: 'Dockerfile'

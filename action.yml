@@ -1,23 +1,18 @@
-name: 'My Docker Composite Action'
-description: 'Performs tasks using Docker'
+name: 'Get-workflow-Job Status'
+description: 'Retrieve the workflow job status for the unit test job or any other job'
 inputs:
-  org:
+  ORG:
     description: 'The GitHub organization'
     required: true
-  repo:
+  REPO:
     description: 'The GitHub repository'
     required: true
-  github_token:
-    description: 'The GitHub access token'
+  RUN_ID:
+    description: 'The Current workflow run _id'
     required: true
-  branch_name:
-    description: 'The branch name to work with'
+  JOB_NAME:
+    description: 'The Workflow's job name'
     required: true
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  # args:
-  #   ORG: ${{ inputs.org }}
-  #   REPO: ${{ inputs.repo }}
-  #   GH_TOKEN: ${{ inputs.github_token }}
-  #   BRANCH_NAME: ${{ inputs.branch_name }}

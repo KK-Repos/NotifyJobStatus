@@ -6,14 +6,17 @@ load_dotenv()
 org = os.environ.get("ORG")
 repo = os.environ.get("REPO")
 github_token = os.environ.get("GH_TOKEN")
-branch_name = os.environ.get("BRANCH_NAME")
+run_id = os.environ.get("RUN_ID")
+job_name = os.environ.get("JOB_NAME")
 
-# workflow.trigger_workflow(org, repo, github_token, branch_name)
+target_jobs = [job_name]
+print("[target_jobs]",target_jobs)
+print("[run_id]",run_id)
 
-res = workflow.getWorkflowJobs(org,repo,github_token,7501651743)
 
-target_jobs = ["unit-test-job", "cypress-run-job"]
+res = workflow.getWorkflowJobs(org,repo,github_token,run_id)
 
+# target_jobs = ["unit-test-job", "cypress-run-job"]
 
 output_jobs = []
 

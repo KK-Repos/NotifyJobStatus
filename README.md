@@ -1,6 +1,6 @@
 # GetJobStatus GitHub Action
 
-![GJS](https://kk-artifacts.s3.ap-south-1.amazonaws.com/banner.png)
+![GJS](https://kk-artifacts.s3.ap-south-1.amazonaws.com/banner1.png)
 
 Retrieve the workflow job status for specified jobs within a GitHub workflow run.
 

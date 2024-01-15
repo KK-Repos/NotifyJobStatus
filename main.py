@@ -11,8 +11,6 @@ job_name_1 = os.environ.get("JOB_NAME_1")
 job_name_2 = os.environ.get("JOB_NAME_2")
 
 target_jobs = [job_name_1,job_name_2]
-print("[target_jobs]",target_jobs)
-print("[run_id]",run_id)
 
 
 res = workflow.getWorkflowJobs(org,repo,github_token,run_id)

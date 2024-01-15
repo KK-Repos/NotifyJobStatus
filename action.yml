@@ -1,4 +1,4 @@
-name: 'Get-workflow-Job Status'
+name: 'GetJobStatus'
 description: 'Retrieve the workflow job status for the unit test job or any other job'
 inputs:
   ORG:

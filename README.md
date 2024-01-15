@@ -1,11 +1,6 @@
-
 # GetJobStatus GitHub Action
 
-<p align=”center”>
-
-<img width=”200" height=”200" src=”https://devopsjournal.io/images/2021/20211204/20211204_dev_to_hackathon.jpg" alt=”my banner”>
-
-</p>
+![GJS](https://kk-artifacts.s3.ap-south-1.amazonaws.com/banner.png)
 
 Retrieve the workflow job status for specified jobs within a GitHub workflow run.
 

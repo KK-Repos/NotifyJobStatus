@@ -26,3 +26,6 @@ This action fetches the status of one or two specified jobs within a running wor
 - RUN_ID (required): The ID of the current workflow run.
 - JOB_NAME_1 (required): The name of the first job to check status for.
 - JOB_NAME_2 (optional): The name of the second job to check status for.
+- Store the GITHUB_TOKEN as GH_TOKEN in either environment secrets or organization-level secrets.
+------------
+

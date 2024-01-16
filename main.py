@@ -1,4 +1,4 @@
-import workflow
+import workflow , customSlack
 import os
 from dotenv import load_dotenv
 load_dotenv()
@@ -9,6 +9,7 @@ github_token = os.environ.get("GH_TOKEN")
 run_id = os.environ.get("RUN_ID")
 job_name_1 = os.environ.get("JOB_NAME_1")
 job_name_2 = os.environ.get("JOB_NAME_2")
+CHANNEL_ID = os.environ.get("CHANNEL_ID") 
 
 target_jobs = [job_name_1,job_name_2]
 
@@ -33,3 +34,6 @@ with open(output_file, "a") as myfile:
     myfile.write(f"my_output={output_jobs}")
 
 
+
+slackReportMessage = customSlack.create_slack_report_message(CHANNEL_ID,output_jobs)
+customSlack.send_slack_message(CHANNEL_ID,slackReportMessage)

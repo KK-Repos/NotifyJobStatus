@@ -1,8 +1,9 @@
 from slack_sdk import WebClient
 import os
 
+bot_id = os.environ.get("SLACK_BOT_TOKEN") 
 
-client = WebClient(token=os.environ['SLACK_BOT_TOKEN'])
+client = WebClient(token=bot_id)
 
 
 def create_slack_report_message(channel_id, job_details):

@@ -35,8 +35,9 @@ with open(output_file, "a") as myfile:
 
 print("-----------DEBUG-------------")
 
+BOT_TOKEN = os.environ.get("SLACK_BOT_TOKEN") 
 print("[CHANNEL_ID]",CHANNEL_ID)
-print("SLACK_BOT_TOKEN",os.environ['SLACK_BOT_TOKEN'])
+print("SLACK_BOT_TOKEN",BOT_TOKEN)
 
 slackReportMessage = customSlack.create_slack_report_message(CHANNEL_ID,output_jobs)
 print("[slackReportMessage]",slackReportMessage)

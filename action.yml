@@ -16,6 +16,12 @@ inputs:
   JOB_NAME_2:
     description: 'The Workflow job name_2'
     required: false
+  CHANNEL_ID:
+    description: 'Slack channel Id'
+    required: true
+  SLACK_BOT_TOKEN:
+    description: 'Slack bot token'
+    required: true
 runs:
   using: 'docker'
   image: 'Dockerfile'

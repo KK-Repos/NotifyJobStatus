@@ -4,4 +4,5 @@ idna==3.6
 load-dotenv==0.1.0
 python-dotenv==1.0.0
 requests==2.31.0
+slack-sdk==3.26.2
 urllib3==2.1.0

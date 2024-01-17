@@ -33,13 +33,5 @@ output_file = os.getenv('GITHUB_OUTPUT')
 with open(output_file, "a") as myfile:
     myfile.write(f"my_output={output_jobs}")
 
-print("-----------DEBUG-------------")
-
-BOT_TOKEN = os.environ.get("SLACK_BOT_TOKEN") 
-print("[CHANNEL_ID]",CHANNEL_ID)
-print("SLACK_BOT_TOKEN",BOT_TOKEN)
-
 slackReportMessage = customSlack.create_slack_report_message(CHANNEL_ID,output_jobs)
-print("[slackReportMessage]",slackReportMessage)
 sendMessage=customSlack.send_slack_message(CHANNEL_ID,slackReportMessage)
-print("[sendMessage]",sendMessage)

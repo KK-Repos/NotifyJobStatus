@@ -4,10 +4,10 @@ import os
 
 client = WebClient(token=os.environ['SLACK_BOT_TOKEN'])
 
-def create_slack_report_message(channel_id,job_details):
+
+def create_slack_report_message(channel_id, job_details):
     """
     Creates a Slack message with job details and formatted blocks.
-    
     """
 
     job_blocks = []
@@ -68,12 +68,11 @@ def create_slack_report_message(channel_id,job_details):
 def send_slack_message(channel_id, message_payload):
     """
     Sends a Slack message using the provided channel Id  and message payload.
-
     """
     response = client.chat_postMessage(
-    channel=channel_id,
-    text=message_payload["text"],
-    blocks=message_payload["blocks"]
+        channel=channel_id,
+        text=message_payload["text"],
+        blocks=message_payload["blocks"]
     )
 
     return response

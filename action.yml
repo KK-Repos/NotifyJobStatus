@@ -1,4 +1,4 @@
-name: 'NotifyGetJobStatus'
+name: 'NotifyJobStatus'
 description: 'Retrieve the workflow job status for the unit test job or any other job to send slack notification'
 inputs:
   ORG:

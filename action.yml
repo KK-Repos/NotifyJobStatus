@@ -1,5 +1,5 @@
-name: 'GetJobStatus'
-description: 'Retrieve the workflow job status for the unit test job or any other job'
+name: 'NotifyGetJobStatus'
+description: 'Retrieve the workflow job status for the unit test job or any other job to send slack notification'
 inputs:
   ORG:
     description: 'The GitHub organization'

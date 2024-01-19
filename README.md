@@ -1,6 +1,6 @@
 # GetJobStatus in Slack Notification
 
-![GJS](https://kk-artifacts.s3.ap-south-1.amazonaws.com/banner1.png)
+![NGJS](https://kk-artifacts.s3.ap-south-1.amazonaws.com/banner1.png)
 
 Retrieve the workflow job status for specified jobs within a GitHub workflow run.
 
@@ -32,4 +32,9 @@ This action fetches the status of one or two specified jobs within a running wor
 - CHANNEL_ID (required): Provide Slack channel Id to send notification
 - SLACK_BOT_TOKEN: Slack bot token
 ------------
+
+## Sample output for reference
+
+![SampleOutput](https://kk-artifacts.s3.ap-south-1.amazonaws.com/sampleOutput.png)
+
 

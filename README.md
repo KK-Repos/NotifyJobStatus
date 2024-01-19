@@ -1,4 +1,4 @@
-# GetJobStatus GitHub Action
+# GetJobStatus in Slack Notification
 
 ![GJS](https://kk-artifacts.s3.ap-south-1.amazonaws.com/banner1.png)
 
@@ -17,6 +17,8 @@ This action fetches the status of one or two specified jobs within a running wor
     RUN_ID: ${{ github.run_id }}
     JOB_NAME_1: 'job_name_1'
     JOB_NAME_2: 'job_name_2'  # Optional
+    CHANNEL_ID: ${{ secrets.CHANNEL_ID }}
+    SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
 
 ```
 
@@ -27,5 +29,7 @@ This action fetches the status of one or two specified jobs within a running wor
 - JOB_NAME_1 (required): The name of the first job to check status for.
 - JOB_NAME_2 (optional): The name of the second job to check status for.
 - Store the GITHUB_TOKEN as GH_TOKEN in either environment secrets or organization-level secrets.
+- CHANNEL_ID (required): Provide Slack channel Id to send notification
+- SLACK_BOT_TOKEN: Slack bot token
 ------------
 

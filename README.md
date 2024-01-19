@@ -1,4 +1,4 @@
-# GetJobStatus in Slack Notification
+# JobStatus in Slack Notification
 
 ![NGJS](https://kk-artifacts.s3.ap-south-1.amazonaws.com/banner1.png)
 

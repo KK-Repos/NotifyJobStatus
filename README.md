@@ -1,6 +1,6 @@
 # JobStatus in Slack Notification
 
-![NGJS](https://kk-artifacts.s3.ap-south-1.amazonaws.com/banner1.png)
+![NGJS](https://kk-artifacts.s3.ap-south-1.amazonaws.com/banner2.png)
 
 Retrieve the workflow job status for specified jobs within a GitHub workflow run.
 

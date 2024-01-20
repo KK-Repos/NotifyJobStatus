@@ -19,6 +19,7 @@ This action fetches the status of one or two specified jobs within a running wor
     JOB_NAME_2: 'job_name_2'  # Optional
     CHANNEL_ID: ${{ secrets.CHANNEL_ID }}
     SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+    GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
 ```
 

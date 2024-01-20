@@ -10,7 +10,10 @@ This action fetches the status of one or two specified jobs within a running wor
 - Add this action to your workflow:
 
 ```yaml
-- uses: KK-Repos/NotifyJobStatus@v1
+
+- name: Send Slack notificatoin for job status
+  id: notifyjobstatus-id
+  uses: KK-Repos/NotifyJobStatus@v1
   with:
     ORG: 'your-organization'
     REPO: 'your-repository'
@@ -20,6 +23,8 @@ This action fetches the status of one or two specified jobs within a running wor
     CHANNEL_ID: ${{ secrets.CHANNEL_ID }}
     SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
     GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+- name: Get output from NotifyJobStatus actions
+  run: echo ${{ steps.notifyjobstatus-id.outputs.my_output }}
 
 ```
 

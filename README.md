@@ -10,7 +10,7 @@ This action fetches the status of one or two specified jobs within a running wor
 - Add this action to your workflow:
 
 ```yaml
-- uses: iamkishorekumar-git/GetJobStatus@v1
+- uses: KK-Repos/NotifyJobStatus@v1
   with:
     ORG: 'your-organization'
     REPO: 'your-repository'

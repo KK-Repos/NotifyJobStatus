@@ -25,6 +25,12 @@ inputs:
   SLACK_BOT_TOKEN:
     description: 'Slack bot token'
     required: true
+  TARGET_JOB:
+    escription: 'job name'
+    required: false
+  MODIFY_JOB:
+    escription: 'job name'
+    required: false
 runs:
   using: 'docker'
   image: 'Dockerfile'

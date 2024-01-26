@@ -25,10 +25,10 @@ inputs:
   SLACK_BOT_TOKEN:
     description: 'Slack bot token'
     required: true
-  TARGET_JOB:
+  NEW_LINK_JOB_NAME:
     escription: 'job name'
     required: false
-  MODIFY_JOB:
+  OLD_LINK_JOB_NAME:
     escription: 'job name'
     required: false
 runs:

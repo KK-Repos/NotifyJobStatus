@@ -25,6 +25,10 @@ inputs:
   SLACK_BOT_TOKEN:
     description: 'Slack bot token'
     required: true
+  CUSTOM_LINK:
+    description: 'Custom link true or false'
+    default: 'false'
+    required: true
   NEW_LINK_JOB_NAME:
     escription: 'job name'
     required: false

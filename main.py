@@ -23,11 +23,11 @@ output_jobs = []
 
 if customLink and select_job:
     print("inside")
-    for x in res["jobs"]:
+    for x in getJobResponse["jobs"]:
         if x["name"] in select_job:
             html_url=x["html_url"]
 
-for x in res["jobs"]:
+for x in getJobResponse["jobs"]:
     if x["name"] in target_jobs:
         job_info = {
             "Job Name": x["name"],

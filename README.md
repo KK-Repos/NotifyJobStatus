@@ -39,11 +39,12 @@ This action fetches the status of one or two specified jobs within a running wor
 - SLACK_BOT_TOKEN: Slack bot token
 ------------
 
-Optional Inputs:
+##### Optional Inputs:
 
-  CUSTOM_LINK: true
-  NEW_LINK_JOB_NAME: ${{ vars.NEW_LINK_JOB_NAME }}
-  OLD_LINK_JOB_NAME: ${{ vars.OLD_LINK_JOB_NAME }}
+To change the link of view details button 
+  - CUSTOM_LINK: true
+  - NEW_LINK_JOB_NAME
+  - OLD_LINK_JOB_NAME
 
 ## Sample output for reference
 

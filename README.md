@@ -39,15 +39,12 @@ This action fetches the status of one or two specified jobs within a running wor
 - SLACK_BOT_TOKEN: Slack bot token
 ------------
 
-##### Optional Inputs:
+To modify the link in the "View Details" button for a specific job:
 
-To change the link of view details button 
-  - CUSTOM_LINK: true
-  - NEW_LINK_JOB_NAME
-  - OLD_LINK_JOB_NAME
+- CUSTOM_LINK: true
+- NEW_LINK_JOB_NAME: New link job name
+- OLD_LINK_JOB_NAME: Old job name to be replaced with the new link
 
 ## Sample output for reference
 
 ![SampleOutput](https://kk-artifacts.s3.ap-south-1.amazonaws.com/sampleOutput.png)
-
-

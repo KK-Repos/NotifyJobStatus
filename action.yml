@@ -10,9 +10,6 @@ inputs:
   RUN_ID:
     description: 'The Current workflow run _id'
     required: true
-  GH_TOKEN:
-    description: 'The Current workflow run _id'
-    required: true
   JOB_NAME_1:
     description: 'The Workflow job name_1'
     required: true
@@ -30,10 +27,10 @@ inputs:
     default: 'false'
     required: true
   NEW_LINK_JOB_NAME:
-    escription: 'job name'
+    escription: 'new job name'
     required: false
   OLD_LINK_JOB_NAME:
-    escription: 'job name'
+    escription: 'old job name'
     required: false
 runs:
   using: 'docker'

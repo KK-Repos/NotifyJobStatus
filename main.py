@@ -21,8 +21,6 @@ print("target_jobs",target_jobs)
 
 getJobResponse = workflow.getWorkflowJobs(org,repo,github_token,run_id)
 
-print("[getJobResponse]",getJobResponse["jobs"])
-
 output_jobs = []
 
 if customLink and select_job:
@@ -32,11 +30,12 @@ if customLink and select_job:
             html_url=x["html_url"]
 
 for x in getJobResponse["jobs"]:
-    if any(x["name"] in string or string in x["name"] for string in target_jobs):
-    # if x["name"] in target_jobs:
+    jobName = x["name"]
+    print("jobName",jobName)
+    if any(jobName in string or string in jobName for string in target_jobs):
         job_info = {
-            "Job Name": x["name"],
-            "HTML URL": html_url if (customLink and x["name"] == modify_job and x["conclusion"] == "failure") else x["html_url"],
+            "Job Name": jobName,
+            "HTML URL": html_url if (customLink and jobName == modify_job and x["conclusion"] == "failure") else x["html_url"],
             "Status": x["conclusion"]
         }
         print("job_info",job_info)

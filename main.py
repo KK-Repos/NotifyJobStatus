@@ -65,7 +65,8 @@ for x in getJobResponse["jobs"]:
             "Status": x["conclusion"]
         }
         output_jobs.append(job_info)
-output_jobs.append(result_data)
+        
+output_jobs = output_jobs + result_data
 
 print("-------COMBINED-----------")
 print("[output_jobs]",output_jobs)

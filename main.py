@@ -32,7 +32,7 @@ if customLink and select_job:
 for x in getJobResponse["jobs"]:
     jobName = x["name"]
     print("jobName",jobName)
-    if any(jobName in string or string in jobName for string in target_jobs):
+    if any(jobName in s for s in target_jobs):
         job_info = {
             "Job Name": jobName,
             "HTML URL": html_url if (customLink and jobName == modify_job and x["conclusion"] == "failure") else x["html_url"],

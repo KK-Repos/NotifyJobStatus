@@ -32,7 +32,8 @@ if customLink and select_job:
             html_url=x["html_url"]
 
 for x in getJobResponse["jobs"]:
-    if x["name"] in target_jobs:
+    if any(x["name"] in string or string in x["name"] for string in target_jobs):
+    # if x["name"] in target_jobs:
         job_info = {
             "Job Name": x["name"],
             "HTML URL": html_url if (customLink and x["name"] == modify_job and x["conclusion"] == "failure") else x["html_url"],

@@ -16,7 +16,6 @@ CHANNEL_ID = os.environ.get("CHANNEL_ID")
 html_url = None 
 target_jobs = [job_name_1,job_name_2]
 matrix_jobs = [job_name_1]
-print("target_jobs",target_jobs)
 
 
 getJobResponse = workflow.getWorkflowJobs(org,repo,github_token,run_id)

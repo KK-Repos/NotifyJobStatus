@@ -13,6 +13,7 @@ def create_slack_report_message(channel_id, job_details):
 
     job_blocks = []
     for job in job_details:
+        print("job-with-in-slack",job)
         status_text = f"*Status*: {job['Status']}"
         if job['Status'] == 'failure':
             status_text = f"*Status*: :x: {job['Status']}"

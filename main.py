@@ -15,32 +15,59 @@ customLink = os.environ.get("CUSTOM_LINK")
 CHANNEL_ID = os.environ.get("CHANNEL_ID") 
 html_url = None 
 target_jobs = [job_name_1,job_name_2]
-
+matrix_jobs = [job_name_1]
 print("target_jobs",target_jobs)
 
 
 getJobResponse = workflow.getWorkflowJobs(org,repo,github_token,run_id)
 
-output_jobs = []
 
-if customLink and select_job:
-    print("inside")
-    for x in getJobResponse["jobs"]:
-        if x["name"] in select_job:
-            html_url=x["html_url"]
+def extract_job_info(res, matrix_jobs, customLink=None, select_job=None):
+    temp = []
+    for x in res["jobs"]:
+        jobName = x["name"]
+        if any(target_job is not None and target_job in jobName for target_job in matrix_jobs):
+            job_info = {
+                "Job Name": x["name"],
+                "HTML URL": x["html_url"],
+                "Status": x["conclusion"]
+            }
+            temp.append(job_info)
+
+    def check_status(data):
+        all_successful = all(job['Status'] == 'success' for job in data)
+
+        if all_successful:
+            return [{'Job Name': 'Cypress Test', 'Status': 'success', 'HTML URL': data[0]['HTML URL']}]
+        else:
+            if customLink and select_job:
+                for x in res["jobs"]:
+                    if x["name"] in select_job:
+                        html_url = x["html_url"]
+                URL = html_url if (customLink and x["conclusion"] == "failure") else x["html_url"]
+                return [{'Job Name': 'cypress-test', 'Status': 'failed', 'HTML URL': URL}]
+
+    result = check_status(temp)
+    return result
+
+result_data = extract_job_info(getJobResponse, matrix_jobs, customLink, select_job)
+
+print("[result_data]",result_data)
+
+output_jobs = []
 
 for x in getJobResponse["jobs"]:
     jobName = x["name"]
-    if any(target_job is not None and target_job in jobName for target_job in target_jobs):
+    if jobName in target_jobs:
         job_info = {
             "Job Name": jobName,
-            "HTML URL": html_url if (customLink and jobName == modify_job and x["conclusion"] == "failure") else x["html_url"],
+            "HTML URL": x["html_url"],
             "Status": x["conclusion"]
         }
-        print("job_info",job_info)
         output_jobs.append(job_info)
+output_jobs.append(result_data)
 
-print("-------------------")
+print("-------COMBINED-----------")
 print("[output_jobs]",output_jobs)
 
 output_file = os.getenv('GITHUB_OUTPUT')

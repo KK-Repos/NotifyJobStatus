@@ -38,6 +38,7 @@ for x in getJobResponse["jobs"]:
             "HTML URL": html_url if (customLink and x["name"] == modify_job and x["conclusion"] == "failure") else x["html_url"],
             "Status": x["conclusion"]
         }
+        print("job_info",job_info)
         output_jobs.append(job_info)
 
 print("-------------------")

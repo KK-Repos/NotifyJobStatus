@@ -16,8 +16,12 @@ CHANNEL_ID = os.environ.get("CHANNEL_ID")
 html_url = None 
 target_jobs = [job_name_1,job_name_2]
 
+print("target_jobs",target_jobs)
+
 
 getJobResponse = workflow.getWorkflowJobs(org,repo,github_token,run_id)
+
+print("[getJobResponse]",getJobResponse)
 
 output_jobs = []
 
@@ -42,4 +46,6 @@ with open(output_file, "a") as myfile:
     myfile.write(f"my_output={output_jobs}")
 
 slackReportMessage = customSlack.create_slack_report_message(CHANNEL_ID,output_jobs)
+print("[slackReportMessage]",slackReportMessage)
 sendMessage=customSlack.send_slack_message(CHANNEL_ID,slackReportMessage)
+print("[sendMessage]",sendMessage)

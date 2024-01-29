@@ -21,7 +21,7 @@ print("target_jobs",target_jobs)
 
 getJobResponse = workflow.getWorkflowJobs(org,repo,github_token,run_id)
 
-print("[getJobResponse]",getJobResponse)
+print("[getJobResponse]",getJobResponse["jobs"])
 
 output_jobs = []
 

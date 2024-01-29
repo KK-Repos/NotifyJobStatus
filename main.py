@@ -31,15 +31,14 @@ if customLink and select_job:
 
 for x in getJobResponse["jobs"]:
     jobName = x["name"]
-    print("jobName",jobName)
-    # if any(jobName in s for s in target_jobs):
-    #     job_info = {
-    #         "Job Name": jobName,
-    #         "HTML URL": html_url if (customLink and jobName == modify_job and x["conclusion"] == "failure") else x["html_url"],
-    #         "Status": x["conclusion"]
-    #     }
-    #     print("job_info",job_info)
-    #     output_jobs.append(job_info)
+    if any(target_job is not None and target_job in jobName for target_job in target_jobs):
+        job_info = {
+            "Job Name": jobName,
+            "HTML URL": html_url if (customLink and jobName == modify_job and x["conclusion"] == "failure") else x["html_url"],
+            "Status": x["conclusion"]
+        }
+        print("job_info",job_info)
+        output_jobs.append(job_info)
 
 print("-------------------")
 print("[output_jobs]",output_jobs)

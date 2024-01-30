@@ -5,7 +5,7 @@ load_dotenv()
 
 org = os.environ.get("ORG")
 repo = os.environ.get("REPO")
-github_token = os.environ.get("GH_TOKEN")
+github_token = os.environ.get("GITHUB_TOKEN")
 run_id = os.environ.get("RUN_ID")
 job_name_1 = os.environ.get("JOB_NAME_1")
 job_name_2 = os.environ.get("JOB_NAME_2")

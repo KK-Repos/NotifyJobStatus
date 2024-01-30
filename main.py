@@ -12,7 +12,8 @@ job_name_2 = os.environ.get("JOB_NAME_2")
 select_job = os.environ.get("NEW_LINK_JOB_NAME")
 modify_job = os.environ.get("OLD_LINK_JOB_NAME")
 customLink = os.environ.get("CUSTOM_LINK")
-CHANNEL_ID = os.environ.get("CHANNEL_ID") 
+CHANNEL_ID = os.environ.get("CHANNEL_ID")
+FAILURE_STATS = os.environ.get("FAILURE_STATS")
 html_url = None 
 target_jobs = [job_name_1,job_name_2]
 matrix_jobs = [job_name_1]
@@ -44,7 +45,7 @@ def extract_job_info(res, matrix_jobs, customLink=None, select_job=None):
                     if x["name"] in select_job:
                         html_url = x["html_url"]
                 URL = html_url if (customLink and x["conclusion"] == "failure") else x["html_url"]
-                return [{'Job Name': 'cypress-test', 'Status': 'failure', 'HTML URL': URL , 'Total failed files': 10 , 'Total failed test cases':30}]
+                return [{'Job Name': 'cypress-test', 'Status': 'failure', 'HTML URL': URL , 'Total failed test cases': FAILURE_STATS}]
 
     result = check_status(temp)
     return result

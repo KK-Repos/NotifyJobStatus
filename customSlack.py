@@ -30,7 +30,7 @@ def create_slack_report_message(channel_id, job_details):
 
         details_text = f"*Job Name*: {job['Job Name']}\n{status_text}"
 
-        if enable_fail_case and key_length >=5:
+        if enable_fail_case and key_length >=4:
             details_text += f"\n*Total failed test cases*: {job['Total failed test cases']}"
 
         job_block = {

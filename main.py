@@ -5,7 +5,7 @@ load_dotenv()
 
 org = os.environ.get("ORG")
 repo = os.environ.get("REPO")
-github_token = os.environ.get("GITHUB_TOKEN")
+github_token = os.environ.get("GH_TOKEN")
 run_id = os.environ.get("RUN_ID")
 job_name_1 = os.environ.get("JOB_NAME_1")
 job_name_2 = os.environ.get("JOB_NAME_2")
@@ -35,7 +35,10 @@ def extract_job_info(res, matrix_jobs, customLink=None, select_job=None):
             temp.append(job_info)
 
     def check_status(data):
+        print("[check_status-data]",data)
         all_successful = all(job['Status'] == 'success' for job in data)
+
+        print("all_successful",all_successful)
 
         if all_successful:
             return [{'Job Name': 'Cypress Test', 'Status': 'success', 'HTML URL': data[0]['HTML URL']}]
@@ -71,10 +74,10 @@ output_jobs = output_jobs + result_data
 print("-------COMBINED-----------")
 print("[output_jobs]",output_jobs)
 
-output_file = os.getenv('GITHUB_OUTPUT')
+# output_file = os.getenv('GITHUB_OUTPUT')
     
-with open(output_file, "a") as myfile:
-    myfile.write(f"my_output={output_jobs}")
+# with open(output_file, "a") as myfile:
+#     myfile.write(f"my_output={output_jobs}")
 
 slackReportMessage = customSlack.create_slack_report_message(CHANNEL_ID,output_jobs)
 print("[slackReportMessage]",slackReportMessage)

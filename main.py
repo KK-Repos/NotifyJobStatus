@@ -40,12 +40,13 @@ def extract_job_info(res, matrix_jobs, customLink=None, select_job=None):
         if all_successful:
             return [{'Job Name': 'Cypress Test', 'Status': 'success', 'HTML URL': data[0]['HTML URL']}]
         else:
+            html_url = None 
             if customLink and select_job:
                 for x in res["jobs"]:
                     if x["name"] in select_job:
                         html_url = x["html_url"]
-                URL = html_url if (customLink) else x["html_url"]
-                return [{'Job Name': 'cypress-test', 'Status': 'failure', 'HTML URL': URL , 'Total failed test cases': FAILURE_STATS}]
+                URL = html_url if customLink else x["html_url"]
+                return [{'Job Name': 'cypress-test', 'Status': 'failure', 'HTML URL': URL, 'Total failed test cases': FAILURE_STATS}]
 
     result = check_status(temp)
     return result

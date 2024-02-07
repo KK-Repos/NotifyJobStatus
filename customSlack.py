@@ -55,10 +55,6 @@ def create_slack_report_message(channel_id, job_details):
     
         job_blocks.append(job_block)
 
-            # Add color bar based on status
-
-
-
     message = {
         "channel": channel_id,
         "text": "Github Actions Daily Report ",

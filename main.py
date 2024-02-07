@@ -35,10 +35,7 @@ def extract_job_info(res, matrix_jobs, customLink=None, select_job=None):
             temp.append(job_info)
 
     def check_status(data):
-        print("[check_status-data]",data)
         all_successful = all(job['Status'] == 'success' for job in data)
-
-        print("all_successful",all_successful)
 
         if all_successful:
             return [{'Job Name': 'Cypress Test', 'Status': 'success', 'HTML URL': data[0]['HTML URL']}]
@@ -47,15 +44,13 @@ def extract_job_info(res, matrix_jobs, customLink=None, select_job=None):
                 for x in res["jobs"]:
                     if x["name"] in select_job:
                         html_url = x["html_url"]
-                URL = html_url if (customLink and x["conclusion"] == "failure") else x["html_url"]
+                URL = html_url if (customLink) else x["html_url"]
                 return [{'Job Name': 'cypress-test', 'Status': 'failure', 'HTML URL': URL , 'Total failed test cases': FAILURE_STATS}]
 
     result = check_status(temp)
     return result
 
 result_data = extract_job_info(getJobResponse, matrix_jobs, customLink, select_job)
-
-print("[result_data]",result_data)
 
 output_jobs = []
 
@@ -71,15 +66,10 @@ for x in getJobResponse["jobs"]:
         
 output_jobs = output_jobs + result_data
 
-print("-------COMBINED-----------")
-print("[output_jobs]",output_jobs)
-
-# output_file = os.getenv('GITHUB_OUTPUT')
+output_file = os.getenv('GITHUB_OUTPUT')
     
-# with open(output_file, "a") as myfile:
-#     myfile.write(f"my_output={output_jobs}")
+with open(output_file, "a") as myfile:
+    myfile.write(f"my_output={output_jobs}")
 
 slackReportMessage = customSlack.create_slack_report_message(CHANNEL_ID,output_jobs)
-print("[slackReportMessage]",slackReportMessage)
 sendMessage=customSlack.send_slack_message(CHANNEL_ID,slackReportMessage)
-print("[sendMessage]",sendMessage)

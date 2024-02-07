@@ -5,7 +5,7 @@ import os
 from datetime import datetime
 
 bot_id = os.environ.get("SLACK_BOT_TOKEN")
-repoName = os.environ.get("REPO_NAME") 
+repoName = os.environ.get("GH_PROJECT_REPONAME") 
 enable_fail_case = os.environ.get("ENABLE_FAIL_CASE") 
 currentDate = datetime.now().strftime("%A, %B %d, %Y")
 

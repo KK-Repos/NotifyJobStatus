@@ -1,10 +1,10 @@
 name: 'NotifyJobStatus'
 description: 'Retrieve the workflow job status for the unit test job or any other job to send slack notification'
 inputs:
-  ORG:
+  GH_PROJECT_ORGNAME:
     description: 'The GitHub organization'
     required: true
-  REPO:
+  GH_PROJECT_REPONAME:
     description: 'The GitHub repository'
     required: true
   RUN_ID:
@@ -28,9 +28,6 @@ inputs:
     required: true
   NEW_LINK_JOB_NAME:
     escription: 'new job name'
-    required: false
-  OLD_LINK_JOB_NAME:
-    escription: 'old job name'
     required: false
 runs:
   using: 'docker'

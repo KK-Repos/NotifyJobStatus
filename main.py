@@ -3,14 +3,13 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
-org = os.environ.get("ORG")
-repo = os.environ.get("REPO")
+org = os.environ.get("GH_PROJECT_ORGNAME")
+repo = os.environ.get("GH_PROJECT_REPONAME")
 github_token = os.environ.get("GITHUB_TOKEN")
 run_id = os.environ.get("RUN_ID")
 job_name_1 = os.environ.get("JOB_NAME_1")
 job_name_2 = os.environ.get("JOB_NAME_2")
 select_job = os.environ.get("NEW_LINK_JOB_NAME")
-modify_job = os.environ.get("OLD_LINK_JOB_NAME")
 customLink = os.environ.get("CUSTOM_LINK")
 CHANNEL_ID = os.environ.get("CHANNEL_ID")
 FAILURE_STATS = os.environ.get("FAILURE_STATS")

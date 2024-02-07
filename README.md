@@ -15,8 +15,8 @@ This action fetches the status of one or two specified jobs within a running wor
   id: notifyjobstatus-id
   uses: KK-Repos/NotifyJobStatus@v1
   with:
-    ORG: 'your-organization'
-    REPO: 'your-repository'
+    GH_PROJECT_ORGNAME: 'your-organization'
+    GH_PROJECT_REPONAME: 'your-repository'
     RUN_ID: ${{ github.run_id }}
     JOB_NAME_1: 'job_name_1'
     JOB_NAME_2: 'job_name_2'  # Optional

@@ -46,7 +46,7 @@ To modify the link in the "View Details" button for a specific job:
 - OLD_LINK_JOB_NAME: Old job name to be replaced with the new link
 
 #### Matrx Jobs
-	 Matrix jobs should same name but ending with 0,1 like that if you have matrix jobs in your workflow - add that job name in JOB_NAME_1 as input provide the common name for matrix - automation-test 
+Matrix jobs should same name but ending with 0,1 like that if you have matrix jobs in your workflow - add that job name in JOB_NAME_1 as input provide the common name for matrix - automation-test 
 ## Sample output for reference
 
 ![SampleOutput](https://kk-artifacts.s3.ap-south-1.amazonaws.com/sampleOutput.png)

@@ -1,10 +1,17 @@
-# JobStatus in Slack Notificatio
+# JobStatus in Slack Notification
 
 ![NGJS](https://kk-artifacts.s3.ap-south-1.amazonaws.com/banner2.png)
 
 Retrieve the workflow job status for specified jobs within a GitHub workflow run.
 
 This GitHub Action fetches the status of one or two specified jobs within a running workflow and makes the results available for downstream actions. It is ideal for integrating job status checks into your workflows for conditional execution or Slack notifications.
+
+## Features
+
+- Notify the status of one or two specified jobs in a GitHub workflow.
+- Integration with Slack for real-time notifications.
+- Customizable "View Details" link for specific jobs.
+- Support for matrix jobs and display of total failed test cases for automation workflows.
 
 ## Usage
 
@@ -52,8 +59,6 @@ To display the total failed test cases for your automation, use **FAILURE_STATS*
 
 ![SampleOutput](https://kk-artifacts.s3.ap-south-1.amazonaws.com/sampleOutput.png)
 
-Improve this readme and add open-source contribution guidelines and a "Buy Me Coffee" link for support. Contributions are welcome! 🚀
-
 ## Open-Source Contribution Guidelines
 
 1. Fork the repository.
@@ -62,8 +67,6 @@ Improve this readme and add open-source contribution guidelines and a "Buy Me Co
 4. Push to the branch: `git push origin feature/improvement`.
 5. Submit a pull request.
 
-Feel free to use emojis to express your excitement! 🌟
-
 If you find this project helpful or just want to support it, consider [buying me coffee](https://www.buymeacoffee.com/kk.repos)!
 
-Thank you for your contribution! 🙌
+Contributions are welcome! 🚀

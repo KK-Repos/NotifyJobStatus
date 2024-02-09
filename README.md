@@ -22,7 +22,7 @@ This action fetches the status of one or two specified jobs within a running wor
     JOB_NAME_2: 'job_name_2'  # Optional
     CHANNEL_ID: ${{ secrets.CHANNEL_ID }}
     SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-    GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+    GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 - name: Get output from NotifyJobStatus actions
   run: echo ${{ steps.notifyjobstatus-id.outputs.my_output }}
 
@@ -43,10 +43,13 @@ To modify the link in the "View Details" button for a specific job:
 
 - CUSTOM_LINK: true
 - NEW_LINK_JOB_NAME: New link job name
-- OLD_LINK_JOB_NAME: Old job name to be replaced with the new link
 
 #### Matrx Jobs
 Matrix jobs should same name but ending with 0,1 like that if you have matrix jobs in your workflow - add that job name in JOB_NAME_1 as input provide the common name for matrix - automation-test 
 ## Sample output for reference
+
+# To Display total failed test cases for your automaytion use
+
+FAILURE_STATS input value as some number 
 
 ![SampleOutput](https://kk-artifacts.s3.ap-south-1.amazonaws.com/sampleOutput.png)

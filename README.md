@@ -1,17 +1,17 @@
-# JobStatus in Slack Notification
+# JobStatus in Slack Notificatio
 
 ![NGJS](https://kk-artifacts.s3.ap-south-1.amazonaws.com/banner2.png)
 
 Retrieve the workflow job status for specified jobs within a GitHub workflow run.
 
-This action fetches the status of one or two specified jobs within a running workflow and makes the results available for downstream actions. It's ideal for integrating job status checks into your workflows for conditional execution or slack notifications.
+This GitHub Action fetches the status of one or two specified jobs within a running workflow and makes the results available for downstream actions. It is ideal for integrating job status checks into your workflows for conditional execution or Slack notifications.
 
 ## Usage
-- Add this action to your workflow:
+
+Add this action to your workflow:
 
 ```yaml
-
-- name: Send Slack notificatoin for job status
+- name: Send Slack notification for job status
   id: notifyjobstatus-id
   uses: KK-Repos/NotifyJobStatus@v1
   with:
@@ -23,33 +23,47 @@ This action fetches the status of one or two specified jobs within a running wor
     CHANNEL_ID: ${{ secrets.CHANNEL_ID }}
     SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
     GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-- name: Get output from NotifyJobStatus actions
+    
+- name: Get output from NotifyJobStatus action
   run: echo ${{ steps.notifyjobstatus-id.outputs.my_output }}
-
 ```
 
-###### Inputs
-- ORG (required): The GitHub organization name.
-- REPO (required): The GitHub repository name.
-- RUN_ID (required): The ID of the current workflow run.
-- JOB_NAME_1 (required): The name of the first job to check status for.
-- JOB_NAME_2 (optional): The name of the second job to check status for.
-- GITHUB_TOKEN (required): GitHub automatically creates a unique GITHUB_TOKEN secret to use in your workflow - to know more click [here](https://docs.github.com/en/actions/security-guides/automatic-token-authentication)
-- CHANNEL_ID (required): Provide Slack channel Id to send notification
-- SLACK_BOT_TOKEN: Slack bot token
-------------
+### Inputs
+- **GH_PROJECT_ORGNAME** (required): The GitHub organization name.
+- **GH_PROJECT_REPONAME** (required): The GitHub repository name.
+- **RUN_ID** (required): The ID of the current workflow run.
+- **JOB_NAME_1** (required): The name of the first job to check status for.
+- **JOB_NAME_2** (optional): The name of the second job to check status for.
+- **GITHUB_TOKEN** (required): GitHub automatically creates a unique GITHUB_TOKEN secret to use in your workflow - [learn more](https://docs.github.com/en/actions/security-guides/automatic-token-authentication)
+- **CHANNEL_ID** (required): Provide Slack channel ID to send notifications.
+- **SLACK_BOT_TOKEN**: Slack bot token.
 
 To modify the link in the "View Details" button for a specific job:
 
-- CUSTOM_LINK: true
-- NEW_LINK_JOB_NAME: New link job name
+- Set **CUSTOM_LINK** to `true`.
+- Set **NEW_LINK_JOB_NAME** to the new link job name.
 
-#### Matrx Jobs
-Matrix jobs should same name but ending with 0,1 like that if you have matrix jobs in your workflow - add that job name in JOB_NAME_1 as input provide the common name for matrix - automation-test 
-## Sample output for reference
+#### Matrix Jobs
+If you have matrix jobs in your workflow Add the common name for the matrix in **JOB_NAME_1** as input, providing the common name for matrix (e.g., `automation-test`).
 
-# To Display total failed test cases for your automaytion use
+To display the total failed test cases for your automation, use **FAILURE_STATS** as the input value.
 
-FAILURE_STATS input value as some number 
+## Sample Output for Reference
 
 ![SampleOutput](https://kk-artifacts.s3.ap-south-1.amazonaws.com/sampleOutput.png)
+
+Improve this readme and add open-source contribution guidelines and a "Buy Me Coffee" link for support. Contributions are welcome! 🚀
+
+## Open-Source Contribution Guidelines
+
+1. Fork the repository.
+2. Create a new branch: `git checkout -b feature/improvement`.
+3. Make your changes and commit them: `git commit -m 'Improve: Add more details to readme'`.
+4. Push to the branch: `git push origin feature/improvement`.
+5. Submit a pull request.
+
+Feel free to use emojis to express your excitement! 🌟
+
+If you find this project helpful or just want to support it, consider [buying me coffee](https://www.buymeacoffee.com/kk.repos)!
+
+Thank you for your contribution! 🙌

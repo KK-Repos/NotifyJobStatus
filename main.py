@@ -18,8 +18,11 @@ target_jobs = [job_name_1,job_name_2]
 matrix_jobs = [job_name_1]
 
 
+print("[github_token]",github_token)
+
 getJobResponse = workflow.getWorkflowJobs(org,repo,github_token,run_id)
 
+print("getJobResponse",getJobResponse)
 
 def extract_job_info(res, matrix_jobs, customLink=None, select_job=None):
     temp = []

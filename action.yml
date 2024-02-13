@@ -29,6 +29,9 @@ inputs:
   NEW_LINK_JOB_NAME:
     escription: 'new job name'
     required: false
+  GH_TOKEN:
+    escription: 'tokenName'
+    required: false
 runs:
   using: 'docker'
   image: 'Dockerfile'

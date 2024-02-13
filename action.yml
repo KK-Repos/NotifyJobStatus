@@ -29,7 +29,7 @@ inputs:
   NEW_LINK_JOB_NAME:
     escription: 'new job name'
     required: false
-  GH_TOKEN:
+  GH_ACTION_TOKEN:
     escription: 'tokenName'
     required: false
 runs:

@@ -27,7 +27,7 @@ Add this action to your workflow:
     RUN_ID: ${{ github.run_id }}
     JOB_NAME_1: 'job_name_1'
     JOB_NAME_2: 'job_name_2'  # Optional
-    CHANNEL_ID: ${{ secrets.CHANNEL_ID }}
+    CHANNEL_ID: ${{ secrets.SLACK_CHANNEL_ID }}
     SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
     GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     
@@ -42,7 +42,7 @@ Add this action to your workflow:
 - **JOB_NAME_1** (required): The name of the first job to check status for.
 - **JOB_NAME_2** (optional): The name of the second job to check status for.
 - **GITHUB_TOKEN** (required): GitHub automatically creates a unique GITHUB_TOKEN secret to use in your workflow - [learn more](https://docs.github.com/en/actions/security-guides/automatic-token-authentication)
-- **CHANNEL_ID** (required): Provide Slack channel ID to send notifications.
+- **SLACK_CHANNEL_ID** (required): Provide Slack channel ID to send notifications.
 - **SLACK_BOT_TOKEN**: Slack bot token.
 
 To modify the link in the "View Details" button for a specific job:

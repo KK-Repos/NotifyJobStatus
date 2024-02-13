@@ -16,7 +16,7 @@ inputs:
   JOB_NAME_2:
     description: 'The Workflow job name_2'
     required: false
-  CHANNEL_ID:
+  SLACK_CHANNEL_ID:
     description: 'Provide Slack channel Id to send notification'
     required: true
   SLACK_BOT_TOKEN:

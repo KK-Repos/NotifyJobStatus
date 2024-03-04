@@ -18,6 +18,11 @@ def create_slack_report_message(channel_id, job_details):
     Creates a Slack message with job details and formatted blocks.
     """
 
+    print("----DEBGUG PURPOSE------")
+    print("[enable_fail_case]",enable_fail_case)
+    print("[enable_fail_case-type]",type(enable_fail_case))
+
+
     job_blocks = []
 
     for job in job_details:
@@ -30,7 +35,7 @@ def create_slack_report_message(channel_id, job_details):
 
         details_text = f"*Job Name*: {job['Job Name']}\n{status_text}"
 
-        if enable_fail_case and key_length >=4:
+        if enable_fail_case == 'true':
             details_text += f"\n*Total failed test cases*: {job['Total failed test cases']}"
 
         job_block = {

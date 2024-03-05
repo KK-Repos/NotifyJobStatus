@@ -8,6 +8,7 @@ bot_id = os.environ.get("SLACK_BOT_TOKEN")
 repoName = os.environ.get("GH_PROJECT_REPONAME") 
 enable_fail_case = os.environ.get("ENABLE_FAIL_CASE") 
 currentDate = datetime.now().strftime("%A, %B %d, %Y")
+job_name_1 = os.environ.get("JOB_NAME_1")
 
 
 client = WebClient(token=bot_id)
@@ -35,7 +36,7 @@ def create_slack_report_message(channel_id, job_details):
 
         details_text = f"*Job Name*: {job['Job Name']}\n{status_text}"
 
-        if enable_fail_case == 'true' and job['Status'] == 'failure':
+        if enable_fail_case == 'true' and job['Status'] == 'failure' and job['Job Name'] == job_name_1:
             details_text += f"\n*Total failed test cases*: {job['Total failed test cases']}"
 
         job_block = {

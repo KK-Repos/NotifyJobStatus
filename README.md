@@ -56,7 +56,7 @@ If you have matrix jobs in your workflow Add the common name for the matrix in *
 
 To display the total failed test cases for your automation, use **FAILURE_STATS** as the input value.
 
-Note: FAILURE_STATS is applicable for job_name_1 env variable only
+Note: FAILURE_STATS is applicable for job_name_1  variable only
 
 ## Sample Output for Reference
 

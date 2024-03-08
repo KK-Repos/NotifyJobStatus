@@ -52,8 +52,6 @@ def extract_job_info(res, matrix_jobs, customLink=None, select_job=None):
 
 result_data = extract_job_info(getJobResponse, matrix_jobs, customLink, select_job)
 
-print("[result_data]",result_data)
-
 output_jobs = []
 
 for x in getJobResponse["jobs"]:
@@ -65,10 +63,6 @@ for x in getJobResponse["jobs"]:
             "Status": x["conclusion"]
         }
         output_jobs.append(job_info)
-
-print("[output_jobs]",output_jobs)      
-output_jobs = output_jobs + result_data
-print("[Combined]",output_jobs)
 
 output_file = os.getenv('GITHUB_OUTPUT')
     

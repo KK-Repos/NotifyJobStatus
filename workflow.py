@@ -21,3 +21,34 @@ def getWorkflowJobs(org, repo, github_token, run_id):
         return json.loads(response.text)
     except requests.exceptions.RequestException as error:
         logging.error(f"Failed to fetch the job details: {error}")
+
+def getLatestArtifactId(org, repo, pat_token,artifactName):
+    headers = {
+        "Accept": "application/vnd.github+json",
+        "Authorization": f"Bearer {pat_token}",
+        "X-GitHub-Api-Version": "2022-11-28",
+    }
+    url = f"https://api.github.com/repos/{org}/{repo}/actions/artifacts"
+
+    response = json.loads(requests.get(url, headers=headers).text)
+    for artifact in response['artifacts']:
+        if artifact['name'] == artifactName:
+            return artifact['id']
+
+def downloadArtifcat(org, repo, pat_token,artifactID):
+    headers = {
+        "Accept": "application/vnd.github+json",
+        "Authorization": f"Bearer {pat_token}",
+        "X-GitHub-Api-Version": "2022-11-28",
+    }
+
+    url = f"https://api.github.com/repos/{org}/{repo}/actions/artifacts/{artifactID} /zip"
+
+    response = requests.get(url, headers=headers, allow_redirects=True)
+
+    if response.status_code == 200:
+        with open("artifact.zip", "wb") as f:
+            f.write(response.content)
+        print(f"Artifact-{artifactID} downloaded successfully.")
+    else:
+        print(f"Failed to download artifact. Status code: {response.status_code}")

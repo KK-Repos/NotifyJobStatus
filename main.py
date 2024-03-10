@@ -13,7 +13,6 @@ select_job = os.environ.get("NEW_LINK_JOB_NAME")
 customLink = os.environ.get("CUSTOM_LINK")
 CHANNEL_ID = os.environ.get("SLACK_CHANNEL_ID")
 FAILURE_STATS = os.environ.get("FAILURE_STATS")
-pat_token = os.environ.get("pat_token")
 artifactName = os.environ.get("artifactName")
 html_url = None 
 target_jobs = [job_name_2]
@@ -71,7 +70,7 @@ output_file = os.getenv('GITHUB_OUTPUT')
 with open(output_file, "a") as myfile:
     myfile.write(f"my_output={output_jobs}")
 
-artifactID = workflow.getLatestArtifactId(org,repo,pat_token,artifactName)
-workflow.downloadArtifcat(org,repo,pat_token,artifactID)
+artifactID = workflow.getLatestArtifactId(org,repo,github_token,artifactName)
+workflow.downloadArtifcat(org,repo,github_token,artifactID)
 slackReportMessage = customSlack.create_slack_report_message(CHANNEL_ID,output_jobs)
 sendMessage=customSlack.send_slack_message(CHANNEL_ID,slackReportMessage)

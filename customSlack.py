@@ -14,9 +14,11 @@ job_name_1 = os.environ.get("JOB_NAME_1")
 artifactFileName = os.environ.get("FILE_NAME")
 client = WebClient(token=bot_id)
 zip_file_path = "artifact.zip"
+totalFailedCount = 0
 
 
 def create_slack_report_message(channel_id, job_details):
+    global totalFailedCount
     """
     Creates a Slack message with job details and formatted blocks.
     """

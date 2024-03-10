@@ -3,15 +3,17 @@ from dotenv import load_dotenv
 load_dotenv()
 import os
 from datetime import datetime
+import zipfile
+import json
 
 bot_id = os.environ.get("SLACK_BOT_TOKEN")
 repoName = os.environ.get("GH_PROJECT_REPONAME") 
 enable_fail_case = os.environ.get("ENABLE_FAIL_CASE") 
 currentDate = datetime.now().strftime("%A, %B %d, %Y")
 job_name_1 = os.environ.get("JOB_NAME_1")
-
-
+artifactFileName = os.environ.get("FILE_NAME")
 client = WebClient(token=bot_id)
+zip_file_path = "artifact.zip"
 
 
 def create_slack_report_message(channel_id, job_details):
@@ -32,7 +34,7 @@ def create_slack_report_message(channel_id, job_details):
         details_text = f"*Job Name*: {job['Job Name']}\n{status_text}"
 
         if enable_fail_case == 'true' and job['Status'] == 'failure' and job['Job Name'] == job_name_1:
-            details_text += f"\n*Total failed test cases*: {job['Total failed test cases']}"
+            totalFailedCount = job['Total failed test cases']
 
         job_block = {
             "type": "section",
@@ -56,6 +58,42 @@ def create_slack_report_message(channel_id, job_details):
     
         job_blocks.append(job_block)
 
+    job_blocks.append({
+        "type": "section",
+        "text": {
+            "type": "mrkdwn",
+            "text": f"*Total Failed Test cases count*:  { totalFailedCount }",
+        },
+    })
+
+    if enable_fail_case == 'true' and job['Status'] == 'failure' and job['Job Name'] == job_name_1:
+        with zipfile.ZipFile(zip_file_path, 'r') as zip_ref:
+            file_content = zip_ref.read(artifactFileName)
+            res = json.loads(file_content.decode('utf-8'))
+            for result in res["result"]:
+                runner_name = result["runnerName"]
+                test_cases = result["testcases"]
+                filenames = [test_case["text"] for test_case in test_cases]
+                            
+                runner_block = [
+                    {
+                        "type": "section",
+                        "text": {
+                            "type": "mrkdwn",
+                            "text": f"*Container ID:* {runner_name}",
+                        },
+                    },
+                    {
+                        "type": "section",
+                        "text": {
+                            "type": "mrkdwn",
+                            "text": f"*Filenames:*\n\t{chr(8226)} " + f"\n\t{chr(8226)} ".join(filenames),
+                        },
+                    },
+                ]
+
+                job_blocks.extend(runner_block)
+
     message = {
         "channel": channel_id,
         "text": "Github Actions Daily Report ",
@@ -64,7 +102,7 @@ def create_slack_report_message(channel_id, job_details):
                 "type": "header",
                 "text": {
                     "type": "plain_text",
-                    "text": ":slack: Github Actions Daily Report :slack:",
+                    "text": ":sparkles: Github Actions Daily Report :sparkles:",
                 },
             },
             {
@@ -74,7 +112,7 @@ def create_slack_report_message(channel_id, job_details):
                 "type": "context",
                 "elements": [
                     {
-                        "text": f"{currentDate} | Repo: *{repoName}*",
+                        "text": f"{currentDate} | Repo: *{repoName.upper()}*",
                         "type": "mrkdwn"
                     }
                 ]

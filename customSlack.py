@@ -11,7 +11,7 @@ repoName = os.environ.get("GH_PROJECT_REPONAME")
 enable_fail_case = os.environ.get("ENABLE_FAIL_CASE") 
 currentDate = datetime.now().strftime("%A, %B %d, %Y")
 job_name_1 = os.environ.get("JOB_NAME_1")
-artifactFileName = os.environ.get("FILE_NAME")
+artifactFileName = os.environ.get("ARTIFACT_FILE_NAME")
 client = WebClient(token=bot_id)
 zip_file_path = "artifact.zip"
 totalFailedCount = 0

@@ -89,7 +89,7 @@ def create_slack_report_message(channel_id, job_details):
                         "type": "section",
                         "text": {
                             "type": "mrkdwn",
-                            "text": f"*Filenames:*\n\t{chr(8226)} " + f"\n\t{chr(8226)} ".join(filenames),
+                            "text": f"\t{chr(8226)} " + f"\t{chr(8226)} ".join(filenames),
                         },
                     },
                 ]

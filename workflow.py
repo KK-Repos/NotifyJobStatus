@@ -32,6 +32,10 @@ def getLatestArtifactId(org, repo, pat_token,artifactName,run_id):
 
     response = json.loads(requests.get(url, headers=headers).text)
     print("[getLatestArtifactId]",response)
+    print("[getLatestArtifactId-URL]",url)
+    print("[run_id]",run_id)
+
+
     for artifact in response['artifacts']:
         if artifact['name'] == artifactName:
             return artifact['id']

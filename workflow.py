@@ -31,6 +31,7 @@ def getLatestArtifactId(org, repo, pat_token,artifactName,run_id):
     url = f"https://api.github.com/repos/{org}/{repo}/actions/runs/{run_id}/artifacts"
 
     response = json.loads(requests.get(url, headers=headers).text)
+    print("[getLatestArtifactId]",response)
     for artifact in response['artifacts']:
         if artifact['name'] == artifactName:
             return artifact['id']

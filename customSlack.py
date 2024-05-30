@@ -60,7 +60,8 @@ def create_slack_report_message(channel_id, job_details):
     
         job_blocks.append(job_block)
 
-    job_blocks.append({
+    if enable_fail_case:
+        job_blocks.append({
         "type": "section",
         "text": {
             "type": "mrkdwn",

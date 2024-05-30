@@ -47,7 +47,8 @@ def extract_job_info(res, matrix_jobs, customLink=None, select_job=None):
                         html_url = x["html_url"]
                 URL = html_url if customLink else x["html_url"]
                 return [{'Job Name': job_name_1, 'Status': 'failure', 'HTML URL': URL, 'Total failed test cases': FAILURE_STATS}]
-
+            else:
+                return [{'Job Name': job_name_1, 'Status': 'failure', 'HTML URL': data[0]['HTML URL']}]
     result = check_status(temp)
     return result
 

@@ -74,6 +74,7 @@ with open(output_file, "a") as myfile:
     myfile.write(f"my_output={output_jobs}")
 
 artifactID = workflow.getLatestArtifactId(org,repo,github_token,artifactName,run_id)
+print("[artifactID]",artifactID)
 workflow.downloadArtifcat(org,repo,github_token,artifactID)
 slackReportMessage = customSlack.create_slack_report_message(CHANNEL_ID,output_jobs)
 sendMessage=customSlack.send_slack_message(CHANNEL_ID,slackReportMessage)

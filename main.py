@@ -73,8 +73,13 @@ output_file = os.getenv('GITHUB_OUTPUT')
 with open(output_file, "a") as myfile:
     myfile.write(f"my_output={output_jobs}")
 
-artifactID = workflow.getLatestArtifactId(org,repo,github_token,artifactName,run_id)
-print("[artifactID]",artifactID)
-workflow.downloadArtifcat(org,repo,github_token,artifactID)
+
+artifactID = workflow.getLatestArtifactId(org, repo, github_token, artifactName, run_id)
+
+if artifactID is not None:
+    workflow.downloadArtifact(org, repo, github_token, artifactID)
+else:
+    print("No artifact ID found. Skipping download.")
+
 slackReportMessage = customSlack.create_slack_report_message(CHANNEL_ID,output_jobs)
 sendMessage=customSlack.send_slack_message(CHANNEL_ID,slackReportMessage)

@@ -21,6 +21,7 @@ matrix_jobs = [job_name_1]
 
 getJobResponse = workflow.getWorkflowJobs(org,repo,github_token,run_id)
 
+print("[getJobResponse]",getJobResponse)
 
 def extract_job_info(res, matrix_jobs, customLink=None, select_job=None):
     temp = []
@@ -33,10 +34,10 @@ def extract_job_info(res, matrix_jobs, customLink=None, select_job=None):
                 "Status": x["conclusion"]
             }
             temp.append(job_info)
-
+    print("[temp]",temp)
     def check_status(data):
         all_successful = all(job['Status'] == 'success' for job in data)
-
+        print("all_successful",all_successful)
         if all_successful:
             return [{'Job Name': job_name_1, 'Status': 'success', 'HTML URL': data[0]['HTML URL']}]
         else:

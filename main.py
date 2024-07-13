@@ -68,6 +68,7 @@ for x in getJobResponse["jobs"]:
 
 output_jobs = output_jobs + result_data
 
+print("[output_jobs]",output_jobs)
 output_file = os.getenv('GITHUB_OUTPUT')
     
 with open(output_file, "a") as myfile:

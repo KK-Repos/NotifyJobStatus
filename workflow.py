@@ -35,7 +35,7 @@ def getLatestArtifactId(org, repo, pat_token,artifactName,run_id):
         if artifact['name'] == artifactName:
             return artifact['id']
 
-def downloadArtifcat(org, repo, pat_token,artifactID):
+def downloadArtifact(org, repo, pat_token,artifactID):
     headers = {
         "Accept": "application/vnd.github+json",
         "Authorization": f"Bearer {pat_token}",
